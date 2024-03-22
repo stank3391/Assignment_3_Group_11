@@ -9,17 +9,33 @@ public class PreviousCommand extends MacroCommand{
 	
 	@Override
 	public void execute() {
-		command.execute();
+		if (command != null) {
+			command.unexecute();
+		}
+		else {
+			System.out.println("No previous command");
+		}
 	}
 
 	@Override
 	public void unexecute() {
-		command.unexecute();		
+		if (command != null) {
+			command.execute();
+		}
+		else {
+			System.out.println("No previous command");
+		}		
 	}
 
 	@Override
 	public State getState() {
-		return command.getState();
+		if (command != null) {
+			return command.getState();
+		}
+		else {
+			System.out.println("No previous command");
+			return null;
+		}	
 	}
 
 }

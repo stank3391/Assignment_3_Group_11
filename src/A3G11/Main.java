@@ -67,17 +67,17 @@ public class Main {
 		deprogramRemote.AddCommand(button5);
 		deprogramRemote.AddCommand(button6);
 		deprogramRemote.AddCommand(button7);
-		remote.getInvoker(0).programCommand(deprogramRemote);
+		remote.getInvoker(7).programCommand(deprogramRemote);
 		
 		
 		
 		/** GUI **/
 		Scanner scanner = new Scanner(System.in);
-		int userInput = -1;
+		int userInput = displayMenu(scanner);;
 		while (userInput != 0) {
+			remote.buttonWasPressed(userInput - 1);
 			userInput = displayMenu(scanner);
-			//System.out.println(userInput);
-			remote.buttonWasPressed(userInput);
+			previousCommand.AddCommand(remote.getInvoker(userInput -1).getCommand());
 		}
 		
 	}

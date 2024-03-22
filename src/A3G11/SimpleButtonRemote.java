@@ -24,6 +24,10 @@ public class SimpleButtonRemote implements Invoker{
 			slot.unexecute();
 		}
 	}
+	@Override
+	public Command getCommand() {
+		return slot;
+	}
 
 
 }

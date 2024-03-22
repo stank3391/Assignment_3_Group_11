@@ -4,4 +4,5 @@ public interface Invoker {
 	void programCommand(Command command);
 	void deprogramCommand();
 	void buttonWasPressed();
+	Command getCommand();
 }
