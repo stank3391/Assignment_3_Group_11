@@ -7,14 +7,23 @@ public class SimpleButtonRemote implements Invoker{
 	public void programCommand(Command command) {
 		this.slot = command;
 	}
+	@Override
+	public void deprogramCommand() {
+		this.slot = null;
+	}
 
 	@Override
 	public void buttonWasPressed() {
-		if (slot.state == State.EXECUTE) {
+		if (slot == null) {
+			System.out.println("Button is not programmed");
+		}
+		else if (slot.getState() == State.EXECUTE) {
 			slot.execute();
 		}
 		else {
 			slot.unexecute();
 		}
 	}
+
+
 }

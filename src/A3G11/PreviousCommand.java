@@ -17,4 +17,9 @@ public class PreviousCommand extends MacroCommand{
 		command.unexecute();		
 	}
 
+	@Override
+	public State getState() {
+		return command.getState();
+	}
+
 }

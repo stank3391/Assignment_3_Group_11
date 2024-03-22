@@ -17,4 +17,12 @@ public class Door implements Receiver{
 		this.position = Position.CLOSED;
 		System.out.println("You have closed the door at " + location + "\\o/");	
 	}
+	
+	@Override
+	public State getState() {
+		if (this.position == Position.OPEN) {
+			return State.UNEXECUTE;
+		}
+		return State.EXECUTE;
+	}
 }

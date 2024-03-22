@@ -26,5 +26,13 @@ public class AirConditioning extends Device{
 		System.out.println("You have turned off the AC \\o/");
 		
 	}
+	
+	@Override
+	public State getState() {
+		if (this.status == Status.ON) {
+			return State.UNEXECUTE;
+		}
+		return State.EXECUTE;
+	}
 
 }

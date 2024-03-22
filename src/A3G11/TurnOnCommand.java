@@ -9,14 +9,17 @@ public class TurnOnCommand implements Command{
 	
 	@Override
 	public void execute() {
-		device.turnOn();
-		
+		device.turnOn();	
 	}
 
 	@Override
 	public void unexecute() {
 		device.turnOff();
-		
+	}
+
+	@Override
+	public State getState() {
+		return device.getState();
 	}
 
 }

@@ -13,8 +13,7 @@ public class AllCommands extends MacroCommand{
 	public void execute() {
 		for (Command c : commands) {
 			c.execute();
-		}
-		
+		}	
 	}
 
 	@Override
@@ -23,5 +22,10 @@ public class AllCommands extends MacroCommand{
 			c.unexecute();
 		}
 		
+	}
+
+	@Override
+	public State getState() {
+		return null;
 	}
 }

@@ -25,7 +25,15 @@ public class Light extends Device{
 	@Override
 	void turnOff() {
 		this.status = Status.OFF;
-		System.out.println("You have turned on the light at " + location + "\\o/");
+		System.out.println("You have turned off the light at " + location + "\\o/");
+	}
+
+	@Override
+	public State getState() {
+		if (this.status == Status.ON) {
+			return State.UNEXECUTE;
+		}
+		return State.EXECUTE;
 	}
 
 }
