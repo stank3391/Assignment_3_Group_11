@@ -21,9 +21,9 @@ public class Main {
 		remote.programCommand(button4, 4);
 		SimpleButtonRemote button5 = new SimpleButtonRemote();
 		remote.programCommand(button5, 5);
-		SimpleButtonRemote button6 = new SimpleButtonRemote();
+		UndoButton button6 = new UndoButton();
 		remote.programCommand(button6, 6);
-		SimpleButtonRemote button7 = new SimpleButtonRemote();
+		ResetButton button7 = new ResetButton();
 		remote.programCommand(button7, 7);
 		
 		
@@ -55,19 +55,11 @@ public class Main {
 		remote.getInvoker(4).programCommand(allLightCommands);
 		//6. Unused slot. This slot should be left unused. It will not control anything, but it can be programmed in the future.
 		//7. Undo button. This button should be used to undo the last used command used by the remote-control user.
-		PreviousCommand previousCommand = new PreviousCommand();
-		remote.getInvoker(6).programCommand(previousCommand);
+		UndoCommand undoCommand = new UndoCommand();
+		remote.getInvoker(6).programCommand(undoCommand);
 		//8. Rest all buttons. This button should be used to reset all buttons. This means it clears all the assigned commands
-		DeprogramRemote deprogramRemote = new DeprogramRemote();
-		deprogramRemote.AddCommand(button0);
-		deprogramRemote.AddCommand(button1);
-		deprogramRemote.AddCommand(button2);
-		deprogramRemote.AddCommand(button3);
-		deprogramRemote.AddCommand(button4);
-		deprogramRemote.AddCommand(button5);
-		deprogramRemote.AddCommand(button6);
-		deprogramRemote.AddCommand(button7);
-		remote.getInvoker(7).programCommand(deprogramRemote);
+		ResetCommand resetRemote = new ResetCommand(remote);
+		remote.getInvoker(7).programCommand(resetRemote);
 		
 		
 		
@@ -76,8 +68,9 @@ public class Main {
 		int userInput = displayMenu(scanner);;
 		while (userInput != 0) {
 			remote.buttonWasPressed(userInput - 1);
+			
+			undoCommand.AddCommand(remote.getInvoker(userInput -1).getCommand());
 			userInput = displayMenu(scanner);
-			previousCommand.AddCommand(remote.getInvoker(userInput -1).getCommand());
 		}
 		
 	}

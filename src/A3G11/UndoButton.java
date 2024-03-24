@@ -1,16 +1,16 @@
 package A3G11;
 
-public class SimpleButtonRemote implements Invoker{
+public class UndoButton implements Invoker{
 	private Command slot;
-
+	
 	@Override
 	public void programCommand(Command command) {
 		this.slot = command;
 	}
-	
+
 	@Override
 	public void deprogramCommand() {
-		this.slot = null;
+		//System.out.println("You can not reset this button");
 	}
 
 	@Override
@@ -19,16 +19,16 @@ public class SimpleButtonRemote implements Invoker{
 			System.out.println("Button is not programmed");
 		}
 		else if (slot.getState() == State.EXECUTE) {
-			slot.execute();
-		}
-		else {
 			slot.unexecute();
 		}
+		else {
+			slot.execute();
+		}
 	}
+
 	@Override
 	public Command getCommand() {
 		return slot;
 	}
-
 
 }

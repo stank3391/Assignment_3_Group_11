@@ -12,14 +12,24 @@ public class AllCommands extends MacroCommand{
 	@Override
 	public void execute() {
 		for (Command c : commands) {
-			c.execute();
+			if (c.getState() == State.EXECUTE) {
+				c.execute();
+			}
+			else {
+				c.unexecute();
+			}
 		}	
 	}
 
 	@Override
 	public void unexecute() {
 		for (Command c : commands) {
-			c.unexecute();
+			if (c.getState() == State.UNEXECUTE) {
+				c.execute();
+			}
+			else {
+				c.unexecute();
+			}
 		}
 		
 	}

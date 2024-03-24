@@ -1,10 +1,15 @@
 package A3G11;
 
-public class PreviousCommand extends MacroCommand{
+public class UndoCommand extends MacroCommand{
 	Command command = null;
 	
 	void AddCommand(Command command) {
-		this.command = command;
+		if (command instanceof UndoCommand) {
+			//System.out.println("Instance of Command in addcommand");
+		}
+		else {
+			this.command = command;
+		}
 	}
 	
 	@Override
