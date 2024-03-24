@@ -1,8 +1,7 @@
 package A3G11;
 
 public class Door implements Receiver{
-	protected Position position = Position.CLOSED;
-	
+	private Position position = Position.CLOSED;
 	private String location;
 	
 	Door(String location){
