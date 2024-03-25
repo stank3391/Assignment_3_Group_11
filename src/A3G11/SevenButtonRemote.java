@@ -2,8 +2,8 @@ package A3G11;
 
 /**
  * @brief Represents a remote control with seven programmable buttons, extending ProgrammableRemote.
- *on is associated with an invoker object that can execute a specific command.
- * This class models a remote control device capable of programming, deprogramming, and invoking commands through its seven buttons. Each butt
+ * 
+ * This class models a remote control device capable of programming, deprogramming, and invoking commands through its seven buttons.
  */
 public class SevenButtonRemote extends ProgramableRemote{
 
